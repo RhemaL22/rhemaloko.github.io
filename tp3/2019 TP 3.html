@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<title> M1105 - TP n°3 </title>
+		<link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+		<link rel="stylesheet" type="text/css" href="styleprint.css" media="print" />
+	</head>
+
+<body>
+<header>Université de Grenoble Alpes - IUT2 - Département informatique<br />
+M1105 - Web</header>
+
+<h1>TP 3<br />
+Le modèle de boîte classique et le positionnement "inline-block" <br>
+Le modèle de boîte flexible et le positionnement "flex"</h1>
+
+<hr />
+
+<h2>Objectifs du TP</h2>
+<ul>
+  <li>Comprendre le modèle de boîte "classique" et le modèle de boîte "flexible"</li>
+  <li>Comprendre les modes de positionnement CSS "inline-block" et "flex"</li>
+  <li>Appliquer le positionnement "flex" pour la réalisation d'une page fluide "flat design"</li>
+</ul>
+
+<p>Ce document est consultable sur la plateforme Chamilo du département.
+</p>
+<hr />
+
+<h2>Préparation et introduction</h2>
+<ol>
+  <li>Créer un répertoire <kbd>TP3</kbd> dans votre répertoire <kbd>M1105</kbd></li>
+	<li>Se positionner dans ce répertoire <kbd>TP3</kbd> </li>
+	<li>Recopier dans votre répertoire <kbd>TP3</kbd> le contenu du répertoire <kbd>/users/info/pub/1a/M1105/tp3</kbd></li>
+</ol>
+
+<p>
+	Comme cela a été vu en cours, il y a plusieurs façons de mettre en page un site et donc de positionner les divisions les unes par rapport aux autres. <br>
+	Les techniques sont variées et ont évolué au cours du temps. Les positionnements "inline-block" et "flex" sont les positionnements actuels qu'il faut savoir maîtriser, même si les autres modes
+	de positionnement vus en cours peuvent s'avérer utiles dans certains cas.
+</p>
+
+<!--************************************************************************-->
+<h2>Le modèle de boîte (modèle classique) </h2>
+ <h3>Introduction au modèle de boîte classique</h3>
+<p>Rappel: tout élément HTML est une « boîte » et possède:</p>
+<ul>
+<li>Un contenu : le texte d’un paragraphe par exemple, ou une autre boîte.</li>
+<li>Une marge interne : padding.</li>
+<li>Une marge externe : margin.</li>
+<li>Une bordure : border.</li>
+</ul>
+
+<p> Dans cette partie nous manipulons le modèle de boîte de CSS avec un exemple très simple. Le fichier <kbd>page1.html</kbd> contient 3 blocs (boîtes) imbriqués: <kbd>html</kbd>, <kbd>body</kbd> et un
+paragraphe <kbd>p</kbd>. </p>
+
+<ul>
+<li>Visualisez le contenu de <kbd>page1.html</kbd></li>
+<li>Créez un fichier <kbd>page1.css</kbd> et ajoutez une couleur de fond
+ à <kbd>body</kbd> (#303050), et au paragraphe <kbd>p</kbd> (#505070). Définissez les caractères de couleur blanche dans le selecteur <kbd>body</kbd>. Vous devez  obtenir la page ci-dessous.</li>
+ </ul>
+
+<p><img src="page1.png" alt="page1" /></p>
+
+<ul>
+ <li>Activez l'outil de Développement Web de Firefox (menu <kbd>Tools / Web Developer / Toggle Tools </kbd>), en particulier l'inspecteur (Inspector) pour afficher le modèle de boîtes (<kbd>Box Model</kbd>), comme sur la figure ci-dessous. <br>
+ Cet outil est extrêmement utile et dès que vous faites du développement web vous devez l'activer.</li>
+<li> Pour la boîte <kbd>p</kbd> quelle est la largeur (width)? la hauteur (height)? les valeurs des marges intérieures (padding)? des marges extérieures (margin)? </li>
+<li>Vous noterez donc que par défaut, la boîte <kbd>p</kbd> a une marge extérieure (margin) haute et basse de 16 pixels.  </li>
+  <li> Remarquez grâce à l'onglet <kbd>Rules</kbd> que la balise <kbd>p</kbd> hérite de la couleur des caractères définie dans <kbd>body</kbd>.</li>
+  </ul>
+
+<!-- <p>Remarques: pour mesurer les valeurs en pixels, vous pouvez aussi installer le module complémentaire
+<a href="https://addons.mozilla.org/fr/firefox/addon/measureit/">MeasureIt</a> à <kbd>Firefox</kbd>. Vous pourriez aussi faire une copie d'écran, par exemple avec
+avec <a href="http://docs.kde.org/stable/fr/kdegraphics/ksnapshot/using-ksapshot.html">
+<kbd>ksnapshot</kbd></a>, puis ouvrir l'image avec <kbd>Gimp</kbd> et utiliser
+<a href="http://docs.gimp.org/2.2/fr/gimp-tool-measure.html">l'outil de mesure</a>
+en mode zoom pour plus de précision. </p> -->
+
+  <p><img src="boxModel.png" alt="Model de boîte de Firefox" /></p>
+
+<ul>
+ <li>Encadrez maintenant d'un trait vert de 2px d'épaisseur la boîte <kbd>p</kbd> et mettre une marge intérieure (padding) de 30px (en haut, à droite, en bas, à gauche). Encadrez la boîte <kbd>body</kbd> d'un trait rouge de 1px</li>
+   <li> Pour la boîte <kbd>p</kbd> quelle est la largeur totale? la hauteur totale? (voir le cours pour les définitions de largeur totale et hauteur totale )</li>
+<li> Pour la boîte <kbd>body</kbd> y a-t-il des marges intérieures (padding) par défaut? des marges extérieures (margin) par défaut? Notez que la couleur de fond de l'élément <kbd>body</kbd> s'étend au delà de sa boîte. C'est une exception. </li>
+<li>Quelle est la taille en pixels de l'espace entre le paragraphe et le haut de la fenêtre ? D'ou vient cette valeur ? </li>
+</ul>
+
+<p> Ajoutez maintenant un autre paragraphe <kbd>p</kbd> sous le précédent (ce paragraphe aura les mêmes caractéristiques que l'autre).<br />
+Vous devez constater que les marges extérieures (margin) entre les paragraphes ne s'additionnent pas.</p>
+<ul>
+ <li>Que s'est-il passé? (voir le cours)</li>
+</ul>
+
+<p>Notez bien que le mécanisme de fusion des marges concerne <strong>uniquement les
+marges extérieures hautes et basses </strong> (<kbd>margin-top</kbd> et <kbd>margin-bottom</kbd>).
+Cette fusion s'opère entre éléments frères (qui se suivent, les 2 boîtes <kbd>p</kbd> dans notre cas), mais également entre un élément et son parent. Pour plus de détails, lire les explications sur le site <a href="http://www.alsacreations.com/article/lire/629-fusion-des-marges.html">Alsacreation</a></p>
+
+<!--************************************************************************-->
+ <h3>Centrage d'une boîte dans sa boîte parent</h3>
+<p> Nous avons utilisé des valeurs de type pixels, il est possible d'utiliser
+une valeur relative de type pourcentage. Le pourcentage fait toujours référence à une autre valeur, celle de sa boîte parent.</p>
+
+<ul>
+<li>Ajoutez dans le fichier CSS une largeur pour le <kbd>body</kbd> de 50 %.</li>
+<li>Modifiez avec la souris la taille de la fenêtre du navigateur pour qu'elle fasse exactement 1000 pixels. (Regardez la taille de la boîte <kbd>html</kbd> grâce au <kbd>Box Model</kbd>).</li>
+<li>Vérifiez que la boîte <kbd>body</kbd> fait la moitié de la taille de  <kbd>html</kbd>.</li>
+<li>Modifiez le CSS pour placer une marge extérieure gauche aux boîtes <kbd>p</kbd> de 10 pixels.</li>
+<li>Quelle est la largeur du contenu des boîtes <kbd>p</kbd> ?</li>
+<li>Quelle est la largeur totale des boîtes <kbd>p</kbd> (largeur du contenu + marges intérieures + bordures)?</li>
+<li>Quelle est la largeur totale des boîtes en tenant compte des marges extérieures<kbd>p</kbd></li>
+</ul>
+
+<p>Notez bien qu'en l'absence d'informations explicites sur la taille, une boîte
+ prend toute la place disponible à l'interieur de sa boîte parent.</p>
+
+
+<p>La valeur <kbd>auto</kbd> sur les marges signifie que les marges sont calculées
+automatiquement en fonction du contexte des autres boîtes:</p>
+
+<ul>
+<li>Changez le CSS de la balise <kbd>body</kbd> :
+  <ul>
+    <li>Placez uniquement la marge extérieure gauche en <kbd>auto</kbd> et observez;</li>
+    <li>Placez uniquement la marge extéreure droite en <kbd>auto</kbd> et observez;</li>
+    <li>Placez les deux marges extérieures gauche et droite en <kbd>auto</kbd> et observez;</li>
+    <li>Placez toutes les marges extérieures (gauche, droite, haut, bas) en <kbd>auto</kbd> et observez;</li>
+  </ul>
+</li>
+<li>Quels sont les effets de ces changements ?</li>
+<li>Avez-vous compris comment centrer une boîte dans son parent ?</li>
+</ul>
+
+<!--************************************************************************-->
+
+<h2>Positionnement <kbd>inline-block</kbd></h2>
+<p>Le fichier <kbd>page2.html</kbd> contient deux paragraphes.</p>
+<ul>
+<li> Créer un fichier <kbd>page2.css</kbd> qui donne une couleur sombre à <kbd>p</kbd>, avec des caractères blancs .
+Vous obtenez la page ci-dessous.</li>
+</ul>
+
+<p><img src="page2.png" alt="page 2"/></p>
+
+<p>Par défaut, des paragraphes sont de type <kbd>block</kbd>, c'est-à-dire qu'ils se placent les uns en dessus des autres. <br />Il est possible de choisir un autre
+mode de positionnement (display), le mode <kbd>inline-block</kbd>. Les boîtes vont alors se placer côte à côte sur une ligne, comme des "mots" dans une phrase.
+ </p>
+
+ <ul>
+ <li>Changer le <kbd>display</kbd> des paragraphes en <kbd>inline-block</kbd>.</li>
+ <li>Vérifiez que la taille des boîtes des paragraphes est minimale (elle s'est adaptée au contenu), et que les boîtes sont maintenant côte à côte.</li>
+ <li>Constatez qu'il y a un petit espace (white space) entre les 2 boîtes alors que les marges extérieures gauche et droite sont nulles. Cela est dû au fait que le placement <kbd>inline-block</kbd> est
+ similaire aux mots dans une phrase: il y a des espaces entre les mots.</li>
+ <li>Modifiez le fichier HTML pour supprimer cet espace (voir le cours) et constatez que l'espace a bien disparu.</li>
+ </ul>
+
+<p>On va maintenant donner une largeur aux paragraphes: </p>
+  <ul>
+ <li>Modifiez le deuxième paragraphe pour qu'il soit assez long (une vingtaine de mots).</li>
+ <li>Donnez une largeur de contenu de 200px aux paragraphes</li>
+ <li>Comment les paragraphes s'alignent-ils?</li>
+ <li>Modifiez le CSS et ajoutez une règle pour les paragraphes: "vertical-align:top;"
+ </li>
+ <li>Comment les paragraphes s'alignent-ils maintenant?</li>
+ </ul>
+
+ <!--************************************************************************-->
+<h2>Positionnement <kbd>flex</kbd></h2>
+
+<p>
+Le positionnement "flex" utilise un autre modèle de boîte que le modèle classique vu précédemment: le <strong>modèle de boîte flexible (flexbox)</strong>. <br>
+Ce mode de positionnement est actuel et est donc à privilègier. </p>
+
+<p>Le principe de base est le suivant :</p>
+<ul>
+<li>un "flex-container" contient des "flex-items" (ce sont les enfants directs du conteneur)</li>
+<li>le "flex-container" définit le contexte global de modèle de boîte flexible (le contexte d’affichage)</li>
+<li>les "flex-items" (ou plus simplement les "items") vont pouvoir être positionnés de différentes façons à l'intérieur du "flex-container" </li>
+</ul>
+
+<p>
+	Pour réaliser la suite du TP, n'hésitez pas à vous référer aux documents suivants car les possibilités sont nombreuses:
+</p>
+<ul>
+ <li>le cours (pour une introduction)</li>
+ <li>la <a href="https://www.alsacreations.com/tuto/lire/1493-css3-flexbox-layout-module.html" target="_blank">CSS3 Flexbox Layout module</a> sur le site Alsacréations (en français) </li>
+ <li>la <a href="https://openclassrooms.com/courses/apprenez-a-creer-votre-site-web-avec-html5-et-css3/la-mise-en-page-avec-flexbox" target="_blank">La mise en page avec Flexbox</a> sur le site OpenClassrooms (en français) </li>
+</ul>
+
+<p>
+	Axe principal d'affichage des items:
+</p>
+<ol>
+	<li>Editer les fichiers <kbd>pageFlex.html</kbd> et <kbd>styleFlex.css</kbd> et visualiser dans le navigateur Firefox le fichier <kbd>pageFlex.html</kbd> </li>
+	<li>Observer que 3 items (ici ce sont des div) sont alignés horizontalement (c'est le mode par défaut)</li>
+	<li>Tester les 3 autres différents sens d’affichage de ces items grâce à la propriété <em>flex-direction</em>. <br>
+	Cette propriété s’applique au "flex-container" et détermine l’axe principal du modèle de boîte flexible.</li>
+</ol>
+
+<p>
+	Nous venons donc de voir que les items peuvent être alignés soit horizontalement (par défaut en mode "display: flex;"), soit verticalement. Cela définit ce qu'on appelle l'axe principal. <br>
+	Il y a également un axe secondaire (cross axis) :	</p>
+			<ul>
+				<li>Si l'axe principal est horizontal, l'axe secondaire est l'axe vertical.</li>
+				<li>et inversement!</li>
+			</ul>
+
+<p>
+	Le retour à la ligne des items (wrap):
+</p>
+<ol>
+	<li>Supposons que l'axe principal est horizontal, par défaut les items essaient de rester sur la même ligne (regarder le comportement lorsque vous diminuez la taille de la fenêtre du navigateur), ce qui peut provoquer des "bugs" d'affichage.<br>
+	Il est possible de spécifier que les items doivent aller à la ligne lorsqu'ils n'ont plus la place grâce à la propriété <em>flex-wrap</em><br>
+	Tester les différentes valeurs de la propriété <em>flex-wrap</em></li>
+</ol>
+
+<p>
+	Alignement (répartition) des items sur l'axe principal:
+</p>
+<ul>
+	<li>Pour changer l'alignement sur l'axe principal, on utilise la propriété <em>justify-content</em></li>
+	<li>Tester les différenes valeurs possibles (5 possiblités). Tester avec un axe principal horizontal, puis vertical</li>
+</ul>
+
+<p>
+	Alignement (répartition) des items sur l'axe secondaire:
+</p>
+<ul>
+	<li>Pour changer l'alignement sur l'axe secondaire, on utilise cette fois la propriété <em>align-items</em></li>
+	<li>Tester les différenes valeurs possibles. Tester avec un axe secondaire vertical, puis horizontal</li>
+</ul>
+
+<p>
+	Flexibilité des items :
+</p>
+<ul>
+<li>La flexibilité des items est réalisée grâce à la propriété <em>flex</em></li>
+<li>La propriété <em>flex</em> est un raccourci de trois propriétés: <em>flex-grow</em>, <em>flex-shrink</em> et <em>flex-basis</em></li>
+<li>Vous l'aurez constaté, par défaut les items occupent la taille minimale de leur contenu (flex-grow: 0, flex-shrink: 1 et flex-basis: auto)</li>
+<li>Pour rendre un item flexible, on lui attribue une valeur de flex-grow (ou flex en raccourci) supérieure à zéro. L'item occupera alors l’espace restant au sein de son conteneur</li>
+<li>Tester une valeur de flex: 1 pour le premier item</li>
+</ul>
+
+<p>
+	Pour finir, quelques exemples à réaliser (certains ont été réalisés précédemment):
+</p>
+<img class="small" src="flex1.png" alt="" /><img class="small" src="flex2.png" alt="" /><img class="small" src="flex3.png" alt="" />
+<img class="small" src="flex4.png" alt="" /><img class="small" src="flex5.png" alt="" /><img class="small" src="flex6.png" alt="" />
+<img class="small" src="flex7.png" alt="" /><img class="small" src="flex8.png" alt="" /><img class="small" src="flex9.png" alt="" />
+
+
+
+ <!--************************************************************************-->
+ <h2>Réalisation d'une page dans un style "Flat design" en utilisant le positionnement "flex"</h2>
+
+ <p> On va réaliser une page web dans un style "Flat design".</p>
+
+ <p> Quelques explications: Steve Jobs, le fondateur d'Apple était un adepte, pour
+ ses interfaces, du "skeumorphisme", c'est-à-dire qu'il aimait les ornements graphiques imitant le monde réel. A l'opposé une interface en "flat design", comme celle mise en oeuvre dans Windows 8 par exemple, aura un style minimaliste, clair et épuré (pour plus d'information voir le site <a href="http://www.grapheine.com/divers/flat-design-vs-skeumorphisme">www.grapheine.com</a>). </p>
+
+ <p>La page que nous voulons construire est la suivante: </p>
+ <p><img src="screen1.png" alt="screen 1"/></p>
+ <p>Nous allons opter pour une conception "fluide" (retour à la ligne des boîtes, c'est-à-dire "wrap") qui permet une adaptation automatique à la taille de la fenêtre d'affichage.  La conception fluide doit faire en sorte que si la fenêtre se réduit,
+ les boîtes se réorganisent. Comme par exemple :</p>
+
+ <p><img src="screen2.png" width="400"/></p>
+
+ <p>Editez la page <kbd>pageW.html</kbd> et étudiez-la attentivement pour bien comprendre la structuration du code HTML.<br>
+	 Vous remarquerez qu'il y a 6 items (6 articles): les 4 premiers sont semblables, le 5<sup>ème</sup> contient 2 divisions carrées, et le 6<sup>ème</sup> contient une image de paysage <br> Visualisez la page <kbd>pageW.html</kbd> sous Firefox.
+</p>
+
+ <p>Vous devez créer le fichier CSS <kbd>styleW.css</kbd> mais vous ne modifierez en rien le fichier HTML ! </p>
+ <p> <strong>Important:</strong> </p>
+ <ul>
+	 <li>Vous utiliserez uniquement le positionnement <kbd>flex</kbd> pour la mise en page des 6 articles principaux et des 2 divisions carrées d'identifiant "game" et "music"</li>
+	 <li><strong>Attention :</strong>  les divisions div qui suivent immédiatement les titres h2 (<kbd>h2+div</kbd>) seront positionnées en flottant à droite (<kbd>float: right</kbd>) </li>
+ </ul>
+
+<p>Voici les spécifications pour la feuille de style <kbd>styleW.css</kbd> :</p>
+<ul>
+<li>Les polices de caractères seront dans l'ordre : Calibri, Arial, sans-serif;</li>
+<li>Les caractères sont de couleur blanche.</li>
+<li> Le jeu de couleurs est le suivant:
+	<ul>
+	<li>Bleu du fond : #343752</li>
+	<li>Vert : #37B6B7</li>
+	<li>Violet : #683FB7</li>
+	<li>Rouge : #B71C54</li>
+  <li>Bleu clair : #4C98E7</li>
+	<li>Orange : #DA542D</li>
+	</ul>
+ </li>
+ <li>Les divisions div qui suivent immédiatement les titres h2 (<kbd>h2+div</kbd>) sont positionnées en flottant à droite </li>
+ <li>Les 6 articles forment des boîtes de <strong>310px de largeur totale x 150px de hauteur totale</strong> et ont une petite marge extérieure entre elles. </li>
+ <li>Les 4 premiers articles auront une marge intérieure (padding) de 10px.</li>
+<li>Les 2 divisions carrées d'identifiant "game" et "music" font 150px de coté et il y a une petite marge entre ces deux divisions.</li>
+<li>La fluidité ne concerne que l'agencement des 6 articles (les 2 divisions carrées bougeront donc ensemble).</li>
+ <li> <strong>Attention!</strong> n'oubliez pas que la <strong><kbd>largeur d'une boîte = largeur du contenu (width) + marge intérieure (padding) à gauche et à droite + l'épaisseur des bordures à gauche et à droite </kbd></strong>(il n'y a pas de bordures ici). Idem pour la hauteur.
+	 <br>Cela signifie que si vous mettez un padding, il faut diminuer d'autant la largeur (la hauteur) pour conserver la même taille. Et tous les articles n'ont pas de padding!</li>
+</ul>
+
+<!--************************************************************************-->
+		<!-- <h2>Le positionnement <kbd>float</kbd></h2>
+
+		<p>Le positionnement <kbd>float</kbd> est délicat à manipuler. Voici ici quelques éléments: <br>
+		Il faut bien comprendre que le positionnement <kbd>float</kbd> fait "sortir une boîte du flux".
+		Lorsqu'une boîte n'est plus dans le flux, elle n'occupe plus la place maximum, mais au contraire elle occupe une place minimum (celle de son contenu).
+		D'autre part, les marges ne fusionnent plus. La boîte reste néanmoins à l'intérieur de sa boîte parent.
+		Le positionnement flottant est complexe car il interagit avec les autres éléments: un placement à utiliser donc avec précaution mais qui reste utile quand on veut par exemple "entourer" une image de texte (voir ci-après)  </p>
+
+		<h3>Application du positionnement <kbd>float</kbd> :</h3>
+		<ul>
+		<li> Ouvrir dans l'éditeur Atom le fichier <kbd>page3.html</kbd>: il contient une boîte <kbd>aside</kbd> (qui contient une image et un mot)
+		et deux paragraphes <kbd>p</kbd>.</li>
+		<li>Visualisez avec votre navigateur la page <kbd>page3.html</kbd>.</li>
+		<li>Créez un fichier <kbd>page3.css</kbd> qui donne une couleur sombre au
+		fond des paragraphes et une couleur claire au texte.</li>
+		<li>L'image s'affiche en haut à gauche, à égale distance des bords de la page, avec le mot "Voyage !". Pourquoi ?</li>
+		<li>L'image fait 150 pixels de haut (height). Pourtant la boîte <kbd>aside</kbd> a une hauteur de quelques pixels de plus. De combien de pixels exactement ?</li>
+		</ul>
+		<p>Explication: ces quelques pixels supplémentaires correspondent au fait qu'une image est un objet "en ligne" comme les mots d'un texte, et l'alignement se fait sur <kbd>la ligne de base</kbd> des caractères. Un espace est donc automatiquement ajouté aux lettres des mots pour placer les jambages comme le bas du <kbd>y</kbd> et du <kbd>g</kbd> du mot <kbd>Voyage</kbd>.</p>
+		<ul>
+		<li>Ajoutez pour l'image l'attribut
+		<kbd>vertical-align: bottom;</kbd> cela force l'image à s'aligner sur l'élément
+		le plus bas de la ligne. Constatez ainsi que la boîte <kbd>aside</kbd> fait bien 150 points et que l'image n'est plus aligné sur la ligne de base du mot (Voir <a href="http://fr.wikipedia.org/wiki/Caractère_(typographie)#Anatomie_des_caract.C3.A8res">Wikipedia</a> pour plus d'informations).</li>
+		</li>
+		</ul>
+		<p>Examinons maintenant le placement flottant.</p>
+		<ul>
+		<li>Rajoutez la propriété de flottant à droite à la balise <kbd>aside</kbd>. </li>
+		<li>Constatez que l'image a changé de place, et faîtes varier la taille de la fenêtre pour visualiser le placement du texte autour de l'image.</li>
+		<li>Constatez également que l'image s'est éloignée du haut de la page, car une
+		boîte flottante est "bloquée" par les marges des boîtes dans laquelle elle flotte.</li>
+		</ul> -->
+  <!--************************************************************************-->
+
+<h2>Travail personnel</h2>
+<p>
+	Jouez au jeu "Flexbox Froggy" (a game where you help Froggy and friends by writing CSS code!) :
+	<a href="http://flexboxfroggy.com/" target="_blank" >http://flexboxfroggy.com/</a>
+</p>
+<p>
+	Si vous arrivez jusqu'au bout... c'est que vous maîtrisez parfaitement le positionnement "flex"! bravo!
+</p>
+
+ <!-- <h2>Travail personnel: fin du CV</h2>
+ <p>Terminez votre CV :</p>
+ <ul>
+ <li>Positionner la photo à droite et ajouter une ombre. Vous utiliserez le positionnement <em>float</em>.</li>
+<li>ajouter une bannière (<kbd>banniereCV-75-584.png</kbd>) sur le coté comme indiqué sur la figure ci-dessous. Vous utiliserez le positionnement de votre choix. <br />
+<strong>Indication:</strong> votre page se composera de deux grandes divisions: une contenant la bannière et l'autre contenant l'ensemble du CV. Ce sont ces deux divisions que vous positionnerez côte à côte.</li>
+ <li>ajouter une bordure pointillée bleue tout autour du CV.</li>
+ </ul>
+
+ <p>Voici le rendu final à obtenir:</p>
+ <p><img src="CV3-PierreMichel.jpg" alt="CV3 PierreMichel"/></p> -->
+
+
+</body>
+</html>

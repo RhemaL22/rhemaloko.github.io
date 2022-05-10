@@ -1,0 +1,39 @@
+<!doctype html>
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="Stage.css"/>
+    </head>
+<body>
+        <div class="text"><p> WELCOME TO MY WEBSITE </p></div>
+        <div id="lim" onleft="on_left_img(event)">
+                <img id="voiture" src="voiture.jpg" width=5% height=10%/></a></div>
+        
+</body>
+</html>
+<script type="text/javascript">
+    // Mon code Javascript
+    var lim = document.querySelector('#lim');
+    var voiture = document.querySelector('#voiture'); 	// variables objet 
+	var x;
+	
+	// programmation des touches de direction
+	document.onkeydown = function(event)
+	{	
+		if (event.keyCode == 37)  gauche(); 
+		if (event.keyCode == 39) droite() ; 
+	}
+	
+	// quatre fonctions de déplacement
+	function gauche() 
+	{
+		x = getComputedStyle(voiture).left; 
+		x = parseInt(x); x= x-20;  
+		x = x + "px";
+		voiture.style.left = x ; 
+	} 
+	function droite() {x = getComputedStyle(voiture).left; 
+        x = parseInt(x); 
+        x= x+20;  
+        x = x + "px"; 
+        voiture.style.left = x ; }
+</script>

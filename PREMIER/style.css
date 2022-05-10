@@ -1,0 +1,58 @@
+*{
+	font-family:Arial;
+	
+}
+@font-face{
+	font-family:'SuperFont';
+	src:url('Akaya_Telivigala/AkayaTelivigala-Regular.ttf');
+}
+
+.test1{
+	color:#9F7901 ;
+	background-color:rgb(211,208,197);
+	font-family:'SuperFont',serif;
+	font-style:normal;/* italic,oblique,normal */
+	font-weight:normal;/* bold,normal */
+	text-decoration:none;/* underline,overline,line-through */
+	text-align:justify;/* left,right,center,justify*/
+	
+	/*
+	les couleur avec le nom en anglais
+	les couleurs avec les hexa 
+	les couleur avec le RGB
+	les couleur avec le RGBA
+	
+	*/
+}
+.test2{
+	color:#1097F9 ;
+	background-color:rgb(197,22,245);
+	
+	/*
+	les couleur avec le nom en anglais
+	les couleurs avec les hexa 
+	les couleur avec le RGB
+	les couleur avec le RGBA
+	
+	*/
+}
+p span {
+	font-size:110%;
+	font-family:'SuperFont',serif;
+	/*
+	taille absolue :px
+	taille relative, %, em,rem,ex....
+	*/
+	
+}
+.block{
+	
+	border: 2px solid gray;
+}
+div+h2{
+	color:pink;
+	
+}
+h2[id='monH']{
+	background-color:blue;
+}
