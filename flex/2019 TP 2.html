@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<title> M1105 - TP n°2 </title>
+		<link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+		<link rel="stylesheet" type="text/css" href="styleprint.css" media="print" />
+	</head><body><header>Université de Grenoble Aples - IUT2 - Département informatique<br />M1105 - Web</header><h1>TP 2<br />Introduction au langage CSS<br /> Les styles de base</h1><hr /><h2>Objectifs du TP</h2><ul>  <li>Apprendre les bases du langage CSS</li></ul><p>Ce document est consultable sur la plateforme Chamilo du département.
+</p><hr />
+
+<h2>Qu'est-ce que CSS? </h2><p>Le langage <strong>CSS (Cascading Style Sheets)</strong> est le langage qui permet la mise en forme d'une page web. <br />
+Une feuille de style (par exemple <kbd>style.ccs</kbd>) accompagne la page HTML et indique au navigateur comment il doit afficher les différents éléments de la page, comment ces éléments se positionnent les uns par rapport aux autres.C’est ainsi qu’est défini le design des pages web (style de base + positionnement)</p>
+<p>Aujourd'hui, vous allez voir <strong>les principales règles pour les styles de base</strong> (polices de caractères, mise en forme du texte, couleur,...) et au TP suivant, vous verrez le modèle de "boîte" et le positionnement des "boîtes"</p>
+
+<h2>Exercices</h2><h3>Préparation</h3><ol>    <li>Créer un répertoire <kbd>TP2</kbd> dans votre répertoire <kbd>M1105</kbd></li>
+    <li>Se positionner dans ce répertoire <kbd>TP2</kbd> </li>
+    <li>Recopier dans votre répertoire <kbd>TP2</kbd> le contenu du répertoire <kbd>/users/info/pub/1a/M1105/tp2</kbd></li>
+	  <li>Ouvrir avec l'éditeur Atom les deux fichiers <kbd>page1.html</kbd>, <kbd>stylePage1.css</kbd></li>
+ <li>Visualiser avec Firefox la page <kbd>page1.html</kbd></li>
+</ol>
+
+<p>Voici à quoi ressemble cette page :</p>
+<p class="centre"><img class="reduit" src="page1origine.png" alt="Page1 d'origine" /></p>
+
+<p>
+	Vous remarquerez en faisant varier la largeur de la fenêtre de votre navigateur que les différentes divisions de <kbd>page1.html</kbd> se réarrangent.
+	C'est parce qu'il y a dejà des règles de style de positionnement (positionnement "flexbox") dans le fichier <kbd>stylePage1.css</kbd>.
+	Vous pouvez bien sûr examiner le code de ces règles, mais vous n'avez pas besoin de les modifier.
+</p>
+
+<p>Vous allez compléter la feuille de style (fichier <kbd>stylePage1.css</kbd>) afin d'avoir les propriétés listées ci-dessous. <br>
+<strong>Bien ranger les règles aux bons emplacements</strong> dans le fichier <kbd>stylePage1.css</kbd>.
+
+<br> Mais dans un premier temps, commencer par étudier le code de <kbd>page1.html</kbd> pour bien comprendre la structuration et les différents éléments.
+</p>
+
+
+
+
+<p>
+	Pour vous donner une idée de ce que vous allez devoir obtenir, vous pouvez regarder ci-dessous <a href="#RF">le rendu final (3.8)</a>.
+</p>
+
+<p><strong>Attention! </strong> le langage CSS est très riche et vous ne pouvez pas connaître par coeur ce langage.
+Vous devez donc travailler avec de la documentation en ligne. </p>
+
+<p>Voici trois documents recommandés:</p>
+ <ul>
+  <li>le cours (pour une introduction)</li>
+  <li>la <a href="http://www.w3schools.com/css/css_examples.asp" target="_blank">documention avec exemples, tutoriaux,...</a> sur le site w3schools </li>
+  <li>la <a href="http://www.w3schools.com/cssref/default.asp" target="_blank">liste des propriétés</a> sur le site w3schools </li>
+</ul>
+
+<p><strong>Attention! </strong> Vous vérifierez régulièrement la validité du code CSS grâce à un validateur CSS.<br />
+Vous utiliserez par exemple le validateur CSS du W3C, accessible à l'adresse :<br />
+ <a href="https://jigsaw.w3.org/css-validator/validator.html.fr#validate_by_upload" target="_blank">https://jigsaw.w3.org/css-validator/validator.html.fr</a>
+</p>
+
+
+<h3>Propriétés des polices de caractères et mise en forme du texte</h3>
+<p> Définir les règles de style suivantes:</p>
+ <ul>  <li>pour l'élément body, c'est-à-dire pour toute la page:
+  <ul>
+   <li>la police de caractères (<em>font</em> en anglais) sera Arial, ou Verdana ou une police "sans-serif" </li>
+   <li>la taille par défaut de la police de caractères (correspondant à celle des paragraphes) sera de 0.9em.</li>
+   <li>la couleur par défaut de la police de caractères sera #4D4D4D</li>
+   </ul>
+
+  </li>
+
+    <li>pour tous les éléments h1:
+   <ul>
+	 <li>la police de caractères sera soulignée</li>
+   <li>la police de caractères sera de type <em>small-caps</em></li>
+   </ul>
+  </li>
+
+     <li>pour tous les éléments p de la section (attention! bien choisir votre sélecteur;
+     voir la <a href="http://www.w3schools.com/cssref/css_selectors.asp" target="_blank">liste des sélecteurs</a> sur le site w3schools ):
+   <ul>
+   <li>le texte sera justifié</li>
+   </ul>
+  </li>
+
+    <li>pour tous les éléments p du footer :
+   <ul>
+   <li>la police de caractères sera mise en italique</li>
+   </ul>
+  </li>
+
+</ul>
+
+ <p> Vérifier la validité du code CSS.</p>
+
+<h3>Propriétés de marges extérieures (margin) et de marges intérieures (padding)</h3>
+<p>
+	Consultez la <a href="http://www.w3schools.com/css/">documentation</a> du site W3schools.com, car vous n'avez pas vu les marges en cours.
+</p>
+
+<p> Définir les règles de style suivantes:</p>
+<ul>
+  <li>pour l'élément body:
+ 	<ul>
+		 <li>ajouter une marge extérieure de 50px (en haut, en bas, à droite et à gauche)</li>
+ 	</ul>
+ 	</li>
+	<li>pour chacune des 5 grandes divisions (1 <em>header</em>, 1 <em>section</em>, 2 divisions <em>aside</em>, 1 <em>footer</em>):
+ 	<ul>
+		 <li>ajouter une marge intérieure de 10px (en haut, en bas, à droite et à gauche)</li>
+ 	</ul>
+ 	</li>
+
+</ul>
+
+ <h3>Propriétés de couleur et propriétés de fond</h3>
+ <p> Pour les couleurs, vous pouvez utiliser par exemple le site de <a href="https://www.w3schools.com/colors/default.asp" target="_blank">w3schools.com</a> (mais il y en a beaucoup d'autres!).</p>
+
+ <p> Définir les règles de style suivantes:</p>
+ <ul>  <li>pour l'élément body:
+  <ul>
+      <li>ajouter une image de fond (bg-198-198.png); tester plusiers mode de positionnement, de répétition ou non,...</li>
+  </ul>
+  </li>
+  <li>pour chacune des grandes divisions:
+  <ul>
+   <li>mettre une couleur de fond (vous choisirez vos couleurs et votre notation); </li>
+   </ul>
+  </li>
+
+  <li>pour l'image (la fleur)
+  <ul>
+   <li>ajouter une opacité (0.6 par exemple)</li>
+   </ul>
+  </li>
+
+ </ul>
+
+<h3>Propriétés des listes</h3>
+  <ul>
+   <li>la numérotation de la liste ordonnée sera : I. II. III … </li>
+  <li>supprimer la puce de la liste non ordonnée </li>
+</ul>
+
+<h3>Propriétés des tableaux</h3>
+  <ul>
+  <li>mettre en forme le tableau, tel que montré ci-dessous (vous pouvez vous référer à l'exemple vu en cours) </li>
+ </ul>
+
+<h3>Propriétés des liens (pseudo-classes)</h3>
+<ul>
+  <li>Apparence du lien par défaut : fond bleu, police de caractères soulignéede couleur blanche</li>
+  <li>Apparence du lien lorsque la page a déjà été visitée : fond mauve, police de caractères soulignée de couleur blanche</li>
+  <li>Apparence du lien lorsqu’on pointe dessus : fond blanc, police de caractères de couleur bleue</li>
+  <li>Apparence du lien lors du clic de la souris : fond blanc, police de la même couleur que celle du fond de la division header</li>
+</ul>
+
+<h3 id="RF">Rendu final à obtenir</h3>
+  <p>Voici le résultat final (pas vraiment joli... mais la semaine prochaine, cela s'arrange!!):</p>
+
+<p class="centre"><img class="reduit" src="page1AvecStyle.png" alt="Page1 avec style" /></p>
+
+
+
+<h2>Design du CV</h2><p>Faire une feuille de style afin que votre CV ressemble à cela:</p><p class="centre"><img class="reduit" src="CV2-PierreMichel.png" alt="CV" /></p><p><strong>Quelques indications:</strong></p>  <ul>     <li>la famille de polices de caractère est Arial, sans-serif </li>
+     <li>la couleur bleu marine est #000080 </li>		 <li>la couleur bleu clair est #D0E3FA </li>     <li>les titres h1 et h2 utilisent une variante de police de caractères "small-caps"</li>
+     <li>la liste numérotée est de la forme: I. II. III. …</li>     <li>le texte du pied de page est en italique et positionné à droite</li>
+		 <li>et pour le reste, à vous de faire!</li>
+  </ul>
+<p>Lors d'un prochain TP, vous finaliserez votre CV en positionnant les éléments et nous ajouterons une bannière.</p>
+
+<h2>Pour finir</h2>
+<ul>
+  <li>Compléments à faire sur la page1:
+  <ul>
+  <li>Enlever l'opacité quand on passe sur les images </li>
+  <li>Ajouter une ombre au titre h1</li>
+  <li>Il est possible de numéroter automatiquement les titres h1, h2,… c'est ce qui est fait pour ce sujet de TP. Comment faire?
+  </li>
+  <li>Tester le "pseudo-element first-letter" que l'on applique à un paragraphe </li>
+  </ul>
+  </li>
+ <li>Faire les <a href=" http://www.w3schools.com/css/css_examples.asp" target="_blank">exemples</a> sur le site w3schools.</li>
+ <li>Consulter la <a href="http://www.w3schools.com/cssref/css_selectors.asp" target="_blank">liste des sélecteurs</a> sur le site w3schools. Quels sont ceux que vous connaissez bien maintenant?</li>
+ <li>Revenir au TP1 et faire les question 6. et 7. (nouvelles questions)</li>
+  </ul>
+
+
+</body></html>
